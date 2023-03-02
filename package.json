@@ -1,0 +1,21 @@
+{
+  "name": "bewgle-assignment",
+  "version": "1.0.0",
+  "description": "The java-script codes for the automation of the Login page verification and displaying of error message upon providing wrong credentials are attached in this repository.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jithendra71/Bewgle-Assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jithendra71/Bewgle-Assignment/issues"
+  },
+  "homepage": "https://github.com/Jithendra71/Bewgle-Assignment#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.31.1"
+  }
+}
