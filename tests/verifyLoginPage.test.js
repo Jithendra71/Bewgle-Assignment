@@ -1,26 +1,32 @@
-const { chromium } = require('playwright');
+const { test,expect,chromium } = require('@playwright/test');
 
-describe('Login Page', () => {
+
+test.describe('Login Page', () => {
   let browser;
   let context;
   let page;
 
-  beforeAll(async () => {
-    browser = await chromium.launch();
-    context = await browser.newContext();
-    page = await context.newPage();
+  test.beforeEach(async () => {
+     browser = await chromium.launch();
+     context  = await browser.newContext();
+     page = await context.newPage();
   });
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await browser.close();
   });
 
   test('should display login page', async () => {
-    await page.goto('https://parabank.parasoft.com/parabank/index.htm');
-    await expect(page).toHaveText('h1', 'Customer Login');
-    await expect(page).toHaveSelector('#loginPanel');
-    await expect(page).toHaveSelector('#username');
-    await expect(page).toHaveSelector('#password');
-    await expect(page).toHaveSelector('#loginButton');
+    page.goto('https://parabank.parasoft.com/parabank/index.htm')
+    await expect(page).toHaveTitle('ParaBank | Welcome | Online Banking');
+    // await expect(page).
+    await expect(page.getByRole('heading', { name: 'Customer Login' })).toBeVisible();
+    await expect(page.getByText('Username')).toBeVisible();
+    await expect(page.getByText('Password')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Log In' })).toBeVisible();
+
+    // await expect(page).toHaveSelector('#username');
+    // await expect(page).toHaveSelector('#password');
+    // await expect(page).toHaveSelector('#loginButton');
   });
 });
